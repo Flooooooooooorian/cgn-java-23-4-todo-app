@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.0</version>
+        <version>3.1.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.neuefische</groupId>
@@ -14,7 +14,10 @@
     <name>backend</name>
     <description>backend</description>
     <properties>
-        <java.version>20</java.version>
+        <java.version>21</java.version>
+        <sonar.organization>flooooooooooorian</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.projectName>flooooooooooorian_cgn-java-23-4-todo-app-backend</sonar.projectName>
     </properties>
     <dependencies>
         <dependency>
