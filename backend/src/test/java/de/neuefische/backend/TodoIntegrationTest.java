@@ -11,6 +11,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.oidcLogin;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -43,6 +44,8 @@ public class TodoIntegrationTest {
                                 .content("""
                                         {"description":"Nächsten Endpunkt implementieren","status":"OPEN"}
                                         """)
+                                .with(oidcLogin()
+                                        .userInfoToken(token -> token.claim("login", "github-user")))
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
@@ -69,6 +72,8 @@ public class TodoIntegrationTest {
                                 .content("""
                                         {"description":"Nächsten Endpunkt implementieren","status":"OPEN"}
                                         """)
+                                .with(oidcLogin()
+                                        .userInfoToken(token -> token.claim("login", "github-user")))
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
@@ -111,6 +116,8 @@ public class TodoIntegrationTest {
                                 .content("""
                                         {"description":"Nächsten Endpunkt implementieren","status":"OPEN"}
                                         """)
+                                .with(oidcLogin()
+                                        .userInfoToken(token -> token.claim("login", "github-user")))
                 )
                 .andReturn()
                 .getResponse()
@@ -138,6 +145,8 @@ public class TodoIntegrationTest {
                                 .content("""
                                         {"description":"Nächsten Endpunkt implementieren","status":"OPEN"}
                                         """)
+                                .with(oidcLogin()
+                                        .userInfoToken(token -> token.claim("login", "github-user")))
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
